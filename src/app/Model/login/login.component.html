@@ -1,0 +1,24 @@
+
+<form action="/login" method="POST">
+  <div class="center">
+    <div fxLayout="row" fxLayoutAlign.gt-sm="center center">
+      <div fxLayout="column" fxLayoutGap="20px" fxFlex.gt-sm="30">
+        <div align="center">
+          <h1>Login</h1>
+        </div>
+        <div fxLayout="row" fxLayoutGap="15px" fxFlex.lt-sm="100">
+          <div><span>Username</span></div>
+          <input fxFlex="100" required name="username" type="text" />
+        </div>
+        <div fxLayout="row" fxLayoutGap="15px" fxFlex.lt-sm="100">
+          <div><span>Password</span></div>
+          <input fxFlex="100" required password="password" type="password" />
+        </div>
+        <div fxLayout="row" fxLayoutAlign="center center">
+          <button  type="submit" mat-flat-button fxFlex="30">Login</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</form>
