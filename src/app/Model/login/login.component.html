@@ -1,4 +1,3 @@
-
 <form action="/login" method="POST">
   <div class="center">
     <div fxLayout="row" fxLayoutAlign.gt-sm="center center">
@@ -15,10 +14,34 @@
           <input fxFlex="100" required password="password" type="password" />
         </div>
         <div fxLayout="row" fxLayoutAlign="center center">
-          <button  type="submit" mat-flat-button fxFlex="30">Login</button>
+          <button type="submit" mat-flat-button fxFlex="30">Login</button>
+          <span fxFlex="10"></span>
+          <div>
+            <a [routerLink]="['/register']" routerLinkActive="router-link-active" >Register</a>
+          </div>
         </div>
       </div>
     </div>
   </div>
-
 </form>
+
+<h1>List of all registered users</h1>
+
+<div>
+  <button (click)="getUsers()">
+    get Users
+  </button>
+</div>
+
+<div *ngFor="let user of users | async">
+  {{ user | json }}
+</div>
+
+<div>
+  <button (click)="registerUser()">
+    Register
+  </button>
+</div>
+<div>
+  {{ register | async | json }}
+</div>

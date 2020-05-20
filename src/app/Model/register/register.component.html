@@ -1,0 +1,66 @@
+<div>
+  <div class="row">
+    <div class="mx-auto">
+      <h1>Register</h1>
+    </div>
+  </div>
+  <div>
+
+<div class="row">
+  <div class="mx-lg-auto mx-md-auto" fxFlex.lt-sm="100" fxFlex.gt-sm="50">
+    <div class="jumbotron py-2" >
+      <div>
+        <form #registrationForm="ngForm" (ngSubmit)="onSubmit(registrationForm)">
+          <div class="row input-group-sm py-2">
+            <div><span>Name</span></div>
+            <input  name="name" type="text" class="form-control" ngModel required #name="ngModel"  />
+          </div>
+          <div class="row input-group-sm  py-2">
+            <div><span>Username</span></div>
+            <input required name="username" type="text" class="form-control" ngModel #username="ngModel" />
+          </div>
+          <div class="row input-group-sm  py-2">
+            <div><span>Gender</span></div>
+            <select name="gender" required class="form-control" ngModel #gender="ngModel">
+              <option value="">Select your gender</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+            </select>
+          </div>
+          <div class="row input-group-sm  py-2">
+            <div><span>Phone</span></div>
+            <input required name="phone" type="text" class="form-control"ngModel  #phone="ngModel"/>
+          </div>
+          <div class="row input-group-sm  py-2">
+            <div><span>Altenative Phone</span></div>
+            <input  name="phone1" type="text" class="form-control" ngModel #phone1="ngModel"/>
+          </div>
+          <div class="row input-group-sm  py-2">
+            <div><span>Residence</span></div>
+            <input required name="domicile" type="text" class="form-control" ngModel #domicile="ngModel"/>
+          </div>
+          <div class="row input-group-sm  py-2">
+            <div><span>Region</span></div>
+            <select class="row input-group-sm" name="region_id" required class="form-control" ngModel #region_id="ngModel">
+              <option value="">Select your your Region</option>
+              <option *ngFor="let region of regions |async " value="{{region.id}}">{{region.name}}</option>
+            </select>
+          </div>
+          <div  class="row input-group-sm  py-2">
+            <div><span>Password</span></div>
+            <input required name="password" type="password" class="form-control"ngModel  #password="ngModel" />
+          </div>
+          <div fxLayout="row" fxLayoutAlign="center center" class="py-3">
+            <button  class="btn btn-primary btn-sm" [disabled]="registrationForm.invalid" >Register</button>
+          </div>
+
+        </form>
+      
+
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+</div>
