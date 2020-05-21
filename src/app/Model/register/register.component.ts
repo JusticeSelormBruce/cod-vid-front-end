@@ -1,4 +1,3 @@
-import { register } from 'ts-node';
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Region } from './../../Interface/region';

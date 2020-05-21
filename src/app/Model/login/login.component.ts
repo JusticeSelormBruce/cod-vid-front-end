@@ -1,10 +1,10 @@
+import { NgForm } from '@angular/forms/forms';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { HttpClient, HttpParams } from '@angular/common/http';
-import { User } from './../../Interface/user';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Register } from './../../Interface/register';
 import { environment } from './../../../environments/environment';
+import { Login } from './../../Interface/login';
+import { User } from 'src/app/Interface/user';
 
 @Component({
   selector: 'app-login',
@@ -12,8 +12,8 @@ import { environment } from './../../../environments/environment';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  users: Observable<User[]>;
-  register: Observable<any>;
+  public user: User;
+  result: any;
   readonly url: any;
   constructor(private http: HttpClient) {
     this.url = environment.ROOT_URL.url;
@@ -21,32 +21,13 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  loginForm = new FormGroup({
-    username: new FormControl('', Validators.required),
-    password: new FormControl('', Validators.required),
-  });
-
-  login(data) {
-    console.log(data.value);
-  }
-
-  getUsers() {
-    let params = new HttpParams().set('id', '2');
-    this.users = this.http.get<User[]>(this.url + 'user', { params });
-  }
-
-  registerUser() {
-    const data: Register = {
-      name: 'http test',
-      username: 'helloworld00',
-      password: 'password',
-      phone: '0022334455',
-      phone1: '',
-      gender: 'Female',
-      domicile: 'Accra',
-      region_id: 2,
+  login(data: NgForm) {
+    const lgoinDetails: Login = {
+      username: data.value.username,
+      password: data.value.password,
     };
+  this.result =this.http  .post(this.url + 'user-login', lgoinDetails, {  headers: new HttpHeaders({ 'Content-Type': 'application/json' }) })
 
-    this.register = this.http.post(this.url + 'user', data);
+
   }
 }
