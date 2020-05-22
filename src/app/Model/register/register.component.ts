@@ -5,6 +5,8 @@ import { Observable } from 'rxjs';
 import { environment } from './../../../environments/environment';
 import { NgForm } from '@angular/forms';
 import { Register } from './../../Interface/register';
+import { RegisterService } from './../../Services/register.service';
+
 
 @Component({
   selector: 'app-register',
@@ -13,10 +15,10 @@ import { Register } from './../../Interface/register';
 })
 export class RegisterComponent implements OnInit {
   regions: Observable<Region[]>;
-  registerI: Observable<any>;
+  AuthUser: Observable<Register[]>;
   readonly url: any;
-
-  constructor(private http: HttpClient) {
+  public User: any;
+  constructor(private http: HttpClient, private registerService: RegisterService) {
     this.url = environment.ROOT_URL.url;
   }
 
@@ -36,7 +38,10 @@ export class RegisterComponent implements OnInit {
       domicile: Data.value.domicile,
       region_id: Data.value.region_id,
     }
-    this.http.post(this.url + 'user',data, {headers: new HttpHeaders({'Content-Type':'application/json'}),  }).subscribe();
-  }
+    this.registerService.registerUser(data).subscribe(
+      res => this.User = res
 
+    );
+  
+  }
 }

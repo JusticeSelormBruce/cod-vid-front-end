@@ -11,6 +11,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { RegisterComponent } from './Model/register/register.component';
 import { AppRoutingModule } from './app-routing.module';
+import { NotfoundComponent } from './Model/notfound/notfound.component';
+import { DashboardComponent } from './Model/dashboard/dashboard.component';
+import { RegisterService } from './Services/register.service';
+
 
 
 
@@ -19,10 +23,13 @@ import { AppRoutingModule } from './app-routing.module';
     AppComponent,
     LoginComponent,
     RegisterComponent,
+    NotfoundComponent,
+    DashboardComponent,
 
   ],
   imports: [
-    BrowserModule,
+
+  BrowserModule,
     BrowserAnimationsModule,
     MaterialModule,
     FlexLayoutModule,
@@ -32,7 +39,7 @@ import { AppRoutingModule } from './app-routing.module';
     AppRoutingModule
 
   ],
-  providers: [],
+  providers: [RegisterService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
